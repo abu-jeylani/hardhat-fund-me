@@ -1,5 +1,5 @@
 import { assert, expect } from "chai";
-import { BigNumber, Contract, Signer } from "ethers";
+import { Contract } from "ethers";
 import { network, deployments, getNamedAccounts, ethers } from "hardhat";
 
 import { developmentChains } from "../../helper-hardhat-config";
@@ -11,7 +11,7 @@ import { FundMe, MockV3Aggregator } from "../../typechain-types";
           let fundMe: Contract | FundMe;
           let mockV3Aggregator: Contract | MockV3Aggregator;
           let deployer: any;
-          const sendValue = ethers.utils.parseEther("1000");
+          const sendValue = ethers.utils.parseEther("1");
           beforeEach(async () => {
               // const accounts = await ethers.getSigners()
               // deployer = accounts[0]
@@ -82,7 +82,7 @@ import { FundMe, MockV3Aggregator } from "../../typechain-types";
 
                   // Assert
                   // Maybe clean up to understand the testing
-                  assert.equal(endingFundMeBalance, 0);
+                  assert.equal(endingFundMeBalance.toString(), "0");
                   assert.equal(
                       startingFundMeBalance
                           .add(startingDeployerBalance)
